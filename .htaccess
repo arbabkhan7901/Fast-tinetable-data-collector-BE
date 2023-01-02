@@ -1,0 +1,17 @@
+
+RewriteOptions inherit
+
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?route=$1&control=$2
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/$ index.php?route=$1&control=$2
+
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?route=$1
+RewriteRule ^([a-zA-Z0-9_-]+)/$ index.php?route=$1
+
+RewriteRule ^(.*)\.html$ $1.php
+RewriteRule ^index index.php
+
